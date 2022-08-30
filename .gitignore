@@ -1,0 +1,9 @@
+#Ignore non essential folders
+**/[Ll]ibrary/*
+**/[Ll]ogs/*
+**/[Pp]ackages/*
+**/[Tt]emp/*
+**/[Uu]serSettings/*
+
+#Ignore meta files
+*.meta
