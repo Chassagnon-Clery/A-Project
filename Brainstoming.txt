@@ -1,0 +1,51 @@
+Jeux de Simulation
+
+********** Technique **********
+
++ Unity
++ C#
++ Git (pour le versioning)
++ Blender
+
++ Français et Anglais
++ Sauvegarde
+
+
+
+********** Univers ??? **********
+
+-> Farming dans un univers diff
+-> Farming dans notre univers
+
+-> Survie dans un univers diff
+-> Survie dans notre univers
+
+
+
+********** Style graphique **********
+
+- Simple (clean mais cubique)
+
+
+
+********** Fonctionnalités : **********
+
++ Craft
++ Construction
++ Récolte
++ PNJ
++ Mode co-op (local mini)
++ Upgrade items
++ Vente
++ Faim
+
+- Pas d'attente ou trés peu
+- Pas combat
+- Pas d'ennemi
+
+
+
+********** Modes : **********
+
+-> Mode normal
+-> Mode survie
