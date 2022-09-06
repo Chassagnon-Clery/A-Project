@@ -1,13 +1,24 @@
-## [ 0.0.0 ] - 30/08/2022
-### INIT
-- Init Unity Project
-- Init and Set Up git repo
+# CHANGELOG
 
-### Added
-- Added documents
-- Added .gitignore
-- Added CHANGELOG.md
+### Version 0.1
 
-## Exclude
-- Exclude non essential folders
-- Exclude all .meta files
+
+*Init*
+- Unity Project
+- Git repo
+
+
+*Added*
+- .gitignore
+- CHANGELOG.md
+- documents
+- Added 
+- CCamera
+- CPlayer
+- CItem and CResource
+- CStone and CWood
+
+
+*Exclude*
+- Non essential folders
+- All .meta files
