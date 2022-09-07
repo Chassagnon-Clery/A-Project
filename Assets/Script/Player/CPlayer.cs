@@ -9,8 +9,9 @@ public class CPlayer : MonoBehaviour
     public float interactRange = 2.0f;
     public int damage = 1;
 
-    //Private
+    // Private
     private List<CItem> playerInventory;
+    private GameManager gameManager;
 
 
 
@@ -20,6 +21,7 @@ public class CPlayer : MonoBehaviour
     void Start()
     {
         playerInventory = new List<CItem>();
+        gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
     }
 
 
@@ -53,7 +55,7 @@ public class CPlayer : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            Debug.Log(playerInventory.Count);
+            gameManager.switchUIInventory();
         }
 
         Vector3 forward = transform.TransformDirection(Vector3.forward) * interactRange;

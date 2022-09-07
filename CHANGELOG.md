@@ -9,6 +9,9 @@
 
 
 *Added*
+- Image folder
+- GameManager
+- UI Inventory
 - .gitignore
 - CHANGELOG.md
 - documents

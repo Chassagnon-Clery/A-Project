@@ -15,4 +15,5 @@ public class CItem : MonoBehaviour
     public bool itemIsStackable;
     public int itemMaxByStack;
     public int itemAmount;
+    public Sprite itemImage;
 }
