@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CPlayer : MonoBehaviour
 {
     // Public
     public float moveSpeed = 10.0f;
     public float interactRange = 2.0f;
-    public int damage = 1;
 
     // Private
     private List<CItem> playerInventory;
@@ -56,6 +56,7 @@ public class CPlayer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             gameManager.switchUIInventory();
+            reloadInventory();
         }
 
         Vector3 forward = transform.TransformDirection(Vector3.forward) * interactRange;
@@ -77,7 +78,7 @@ public class CPlayer : MonoBehaviour
         {
             if (hit.transform.tag == "Resource")
             {
-                hit.transform.gameObject.GetComponent<CResource>().interact(damage);
+                hit.transform.gameObject.GetComponent<CResource>().interact(1);
             }
         }
     }
@@ -91,5 +92,23 @@ public class CPlayer : MonoBehaviour
     public void addItemToInventory(CItem item)
     {
         playerInventory.Add(item);
+    }
+
+
+
+    /*  Reload the Player inventory UI
+    *   @since version 0.1
+    *   @version 1.0
+    */
+    public void reloadInventory()
+    {
+        int i = 1;
+        foreach (CItem item in playerInventory)
+        {
+            GameObject slot = GameObject.Find("Slot" + i);
+            slot.GetComponent<Image>().sprite = item.itemImage;
+
+            i++;
+        }
     }
 }

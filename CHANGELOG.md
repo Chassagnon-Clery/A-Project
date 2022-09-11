@@ -9,6 +9,7 @@
 
 
 *Added*
+- reloadInventory function in the CPlayer
 - Image folder
 - GameManager
 - UI Inventory
