@@ -85,30 +85,78 @@ public class CPlayer : MonoBehaviour
 
 
 
+    /*  Return the inventory size
+    *   @since version 0.1
+    *   @version 1.0
+    */
+    public int getInventorySize()
+    {
+        return playerInventory.Count;
+    }
+
+
+
     /*  Add an item to the Player inventory
     *   @since version 0.1
     *   @version 1.0
     */
     public void addItemToInventory(CItem item)
     {
-        playerInventory.Add(item);
+        if (item.itemIsStackable)
+        {
+            List<CItem> results = playerInventory.FindAll(x => x.itemName == item.itemName);
+
+            if (results.Count > 0)
+            {
+                foreach (CItem result in results)
+                {
+                    Debug.Log("Avant : " + result.itemAmount);
+                    result.itemAmount += item.itemAmount;
+                    Debug.Log("Apres : " + result.itemAmount);
+                }
+            }
+            else
+            {
+                playerInventory.Add(item);
+            }
+        }
+        else
+        {
+            playerInventory.Add(item);
+        }
+        reloadInventory();
     }
 
 
 
     /*  Reload the Player inventory UI
     *   @since version 0.1
-    *   @version 1.0
+    *   @version 1.1
     */
     public void reloadInventory()
     {
-        int i = 1;
-        foreach (CItem item in playerInventory)
+        for (int i = 1; i <= 8; i++)
         {
             GameObject slot = GameObject.Find("Slot" + i);
-            slot.GetComponent<Image>().sprite = item.itemImage;
+            Image slotImage = slot.transform.Find("SlotImage").GetComponent<Image>();
+            Text slotText = slot.transform.Find("SlotNumber").GetComponent<Text>();
 
-            i++;
+            slotImage.enabled = false;
+            slotText.enabled = false;
+
+            if (i <= getInventorySize())
+            {
+                CItem item = playerInventory[i - 1];
+
+                slotImage.sprite = item.itemImage;
+                slotImage.enabled = true;
+
+                if (item.itemAmount > 1)
+                {
+                    slotText.text = item.itemAmount.ToString();
+                    slotText.enabled = true;
+                }
+            }
         }
     }
 }

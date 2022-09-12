@@ -116,5 +116,5 @@ MonoBehaviour:
   itemIsStackable: 1
   itemMaxByStack: 5
   itemAmount: 0
-  itemImage: {fileID: 21300000, guid: d6fada10ad2bd084ea9a34bfdcb340fd, type: 3}
+  itemImage: {fileID: 21300000, guid: bd72749327e514248aa7d722e6695cb3, type: 3}
   resourceAmount: 5

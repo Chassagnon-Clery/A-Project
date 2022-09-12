@@ -9,7 +9,8 @@
 
 
 *Added*
-- reloadInventory function in the CPlayer
+- getInventorySize function in CPlayer
+- reloadInventory function in CPlayer
 - Image folder
 - GameManager
 - UI Inventory

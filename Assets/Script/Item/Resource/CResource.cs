@@ -20,20 +20,31 @@ public class CResource : CItem
 
 
 
+    /*  Interaction with a resource
+    *   @since version 0.1
+    *   @version 1.0
+    */
     public void interact(int resourceCollect)
     {
-        resourceAmount -= resourceCollect;
-
-        if (resourceAmount > 0)
+        if (Player.getInventorySize() < 8)
         {
-            itemAmount = resourceCollect;
-            Player.addItemToInventory(this);
+            resourceAmount -= resourceCollect;
+
+            if (resourceAmount > 0)
+            {
+                itemAmount = resourceCollect;
+                Player.addItemToInventory(this);
+            }
+            else
+            {
+                itemAmount = resourceAmount + resourceCollect;
+                Player.addItemToInventory(this);
+                destroyResource();
+            }
         }
         else
         {
-            itemAmount = resourceAmount + resourceCollect;
-            Player.addItemToInventory(this);
-            destroyResource();
+            Debug.Log("Inventory full");
         }
     }
 
