@@ -78,7 +78,7 @@ public class CPlayer : MonoBehaviour
         {
             if (hit.transform.tag == "Resource")
             {
-                hit.transform.gameObject.GetComponent<CResource>().interact(1);
+                hit.transform.gameObject.GetComponent<CResource>().interact(2);
             }
         }
     }
@@ -98,7 +98,7 @@ public class CPlayer : MonoBehaviour
 
     /*  Add an item to the Player inventory
     *   @since version 0.1
-    *   @version 1.0
+    *   @version 1.1
     */
     public void addItemToInventory(CItem item)
     {
@@ -110,19 +110,36 @@ public class CPlayer : MonoBehaviour
             {
                 foreach (CItem result in results)
                 {
-                    Debug.Log("Avant : " + result.itemAmount);
-                    result.itemAmount += item.itemAmount;
-                    Debug.Log("Apres : " + result.itemAmount);
+                    if (result.itemAmount < result.itemMaxByStack)
+                    {
+                        int total = result.itemAmount + item.itemAmount;
+
+                        if (total > result.itemMaxByStack)
+                        {
+                            result.itemAmount = result.itemMaxByStack;
+                            item.itemAmount = total - result.itemMaxByStack;
+                        }
+                        else
+                        {
+                            result.itemAmount = total;
+                            item.itemAmount = 0;
+                            break;
+                        }
+                    }
+                }
+                if (item.itemAmount != 0)
+                {
+                    playerInventory.Add(Instantiate(item));
                 }
             }
             else
             {
-                playerInventory.Add(item);
+                playerInventory.Add(Instantiate(item));
             }
         }
         else
         {
-            playerInventory.Add(item);
+            playerInventory.Add(Instantiate(item));
         }
         reloadInventory();
     }
