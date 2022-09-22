@@ -117,4 +117,4 @@ MonoBehaviour:
   itemMaxByStack: 10
   itemAmount: 0
   itemImage: {fileID: 21300000, guid: 429ee9a931f776b43a36075e11b7d5a2, type: 3}
-  resourceAmount: 10
+  resourceAmount: 15

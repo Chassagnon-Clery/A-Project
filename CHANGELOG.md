@@ -1,5 +1,20 @@
 # CHANGELOG
 
+### Version 0.2
+
+
+*Added*
+- canStackToInventory function in CPlayer
+- inventorySize public parameter in CPlayer
+  
+
+*Deleted*
+- getInventorySize function
+
+
+*Exclude*
+- Build folder
+
 ### Version 0.1
 
 

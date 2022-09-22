@@ -8,6 +8,7 @@ public class CPlayer : MonoBehaviour
     // Public
     public float moveSpeed = 10.0f;
     public float interactRange = 2.0f;
+    public int inventorySize = 8;
 
     // Private
     private List<CItem> playerInventory;
@@ -85,13 +86,43 @@ public class CPlayer : MonoBehaviour
 
 
 
-    /*  Return the inventory size
-    *   @since version 0.1
+    /*  Return the if inventory can stack the new item(s)
+    *   @since version 0.2
     *   @version 1.0
     */
-    public int getInventorySize()
+    public int canStackToInventory(CItem item, int totalToStack)
     {
-        return playerInventory.Count;
+        if (playerInventory.Count < inventorySize)
+        {
+            return totalToStack;
+        }
+        else
+        {
+            if (item.itemIsStackable)
+            {
+                List<CItem> results = playerInventory.FindAll(x => x.itemName == item.itemName);
+
+                if (results.Count > 0)
+                {
+                    int placeRemaining = 0;
+
+                    foreach (CItem result in results)
+                    {
+                        placeRemaining += result.itemMaxByStack - result.itemAmount;
+                    }
+
+                    if (placeRemaining < totalToStack)
+                    {
+                        return placeRemaining;
+                    }
+                    else
+                    {
+                        return totalToStack;
+                    }
+                }
+            }
+            return 0;
+        }
     }
 
 
@@ -148,7 +179,7 @@ public class CPlayer : MonoBehaviour
 
     /*  Reload the Player inventory UI
     *   @since version 0.1
-    *   @version 1.1
+    *   @version 1.2
     */
     public void reloadInventory()
     {
@@ -161,7 +192,7 @@ public class CPlayer : MonoBehaviour
             slotImage.enabled = false;
             slotText.enabled = false;
 
-            if (i <= getInventorySize())
+            if (i <= playerInventory.Count)
             {
                 CItem item = playerInventory[i - 1];
 

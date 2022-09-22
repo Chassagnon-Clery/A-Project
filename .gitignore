@@ -1,5 +1,6 @@
 #Ignore non essential folders
 **/.vscode/
+**/[Bb]uild/*
 **/[Ll]ibrary/*
 **/[Ll]ogs/*
 **/[Tt]emp/*

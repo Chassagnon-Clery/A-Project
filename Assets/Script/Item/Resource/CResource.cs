@@ -22,12 +22,19 @@ public class CResource : CItem
 
     /*  Interaction with a resource
     *   @since version 0.1
-    *   @version 1.0
+    *   @version 1.1
     */
     public void interact(int resourceCollect)
     {
-        if (Player.getInventorySize() < 8)
+        int maxStack = Player.canStackToInventory(this, resourceCollect);
+
+        if (maxStack > 0)
         {
+            if (maxStack < resourceCollect)
+            {
+                resourceCollect = maxStack;
+            }
+
             resourceAmount -= resourceCollect;
 
             if (resourceAmount > 0)
